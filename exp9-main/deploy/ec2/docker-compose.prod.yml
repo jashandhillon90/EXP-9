@@ -1,0 +1,22 @@
+services:
+  backend:
+    image: YOUR_DOCKERHUB_USERNAME/auth-dashboard-backend:latest
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      APP_NAME: Dockerized Auth Dashboard
+      MONGO_URI: YOUR_ATLAS_MONGO_URI
+      JWT_SECRET: YOUR_JWT_SECRET
+      JWT_EXPIRES_IN: 1d
+      FRONTEND_ORIGIN: http://YOUR_ALB_DNS
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+
+  frontend:
+    image: YOUR_DOCKERHUB_USERNAME/auth-dashboard-frontend:latest
+    environment:
+      API_BASE_URL: /api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
