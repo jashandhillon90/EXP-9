@@ -65,7 +65,7 @@ jobs:
       - name: Build and push frontend image
         uses: docker/build-push-action@v6
         with:
-          ccontext: ./exp9-main/frontend
+          context: ./exp9-main/frontend
           push: true
           tags: |
             ${{ env.FRONTEND_IMAGE }}:latest
